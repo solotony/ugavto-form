@@ -1,82 +1,82 @@
 <template>
-    <v-form method="post"  v-bind:action="form_action" >
-        <input type="hidden" v-bind:value="csrf" name="_token">
 
-        <v-stepper v-model="step">
-            <v-stepper-header>
-                <v-stepper-step :complete="step > 1" step="1">Автомобиль</v-stepper-step>
+        <v-form method="post"  v-bind:action="form_action" >
+            <input type="hidden" v-bind:value="csrf" name="_token">
 
-                <v-divider></v-divider>
+            <v-stepper v-model="step">
+                <v-stepper-header>
+                    <v-stepper-step :complete="step > 1" step="1">Автомобиль</v-stepper-step>
 
-                <v-stepper-step :complete="step > 2" step="2">Запчасти</v-stepper-step>
+                    <v-divider></v-divider>
 
-                <v-divider></v-divider>
+                    <v-stepper-step :complete="step > 2" step="2">Запчасти</v-stepper-step>
 
-                <v-stepper-step step="3">Заявка</v-stepper-step>
-            </v-stepper-header>
+                    <v-divider></v-divider>
 
-            <v-stepper-items>
-                <v-stepper-content step="1">
-                    <demand-auto ref="demand-auto"></demand-auto>
-                    <v-container>
-                        <v-layout align-center justify-center row>
-                            <v-btn color="primary" @click="step=2" :disabled="!page1IsValid">Далее</v-btn>
-                        </v-layout>
-                    </v-container>
-                </v-stepper-content>
-                <v-stepper-content step="2">
-                    <demand-data ref="demand-data"></demand-data>
-                    <v-container>
-                        <v-layout align-center justify-center row>
-                            <v-btn color="primary" @click="step=1">Назад</v-btn>
-                            <v-btn color="primary" @click="step=3">Далее</v-btn>
-                        </v-layout>
-                    </v-container>
-                </v-stepper-content>
-                <v-stepper-content step="3">
+                    <v-stepper-step step="3">Заявка</v-stepper-step>
+                </v-stepper-header>
 
-
-                    <div v-if="regMode">
-
-                        <h1>Регистрация нового пользователя</h1>
-                        Если вы уже зарегистрированы, пожалуйста <a href="#" v-on:click="showAuth">авторизуйтесь</a>
-
-                        <user-register-data ref="userregdata"></user-register-data>
-
-                    </div>
-                    <div v-if="authMode">
-
-                        <h1>Укажите логин и пароль</h1>
-                        Если вы еще не зарегистрированы, пожалуйста <a href="#" v-on:click="showReg">заполните регистрационные данные</a>
-                        <user-login-data ref="userlogindata"></user-login-data>
-
-                    </div>
-                    <div v-if="userMode">
-
-                        <h1>Вы уже залогинены</h1>
-                        Просто жмахайте на батон!
-
-                    </div>
+                <v-stepper-items>
+                    <v-stepper-content step="1">
+                        <demand-auto ref="demand-auto"></demand-auto>
+                        <v-container>
+                            <v-layout align-center justify-center row>
+                                <v-btn color="primary" @click="step=2" :disabled="!page1IsValid">Далее</v-btn>
+                            </v-layout>
+                        </v-container>
+                    </v-stepper-content>
+                    <v-stepper-content step="2">
+                        <demand-data ref="demand-data"></demand-data>
+                        <v-container>
+                            <v-layout align-center justify-center row>
+                                <v-btn color="primary" @click="step=1">Назад</v-btn>
+                                <v-btn color="primary" @click="step=3">Далее</v-btn>
+                            </v-layout>
+                        </v-container>
+                    </v-stepper-content>
+                    <v-stepper-content step="3">
 
 
-                    <v-container>
-                        <v-layout align-center justify-center row>
-                            <v-btn color="primary" @click="step=2">Назад</v-btn>
-                            <v-btn color="primary" @click="step=1">Отправить заявку</v-btn>
-                        </v-layout>
-                    </v-container>
+                        <div v-if="regMode">
 
-                </v-stepper-content>
-            </v-stepper-items>
-        </v-stepper>
-        <slot></slot>
-        DemandAuto:page1IsValid={{ page1IsValid }}<br>
-    </v-form>
+                            <h1>Регистрация нового пользователя</h1>
+                            Если вы уже зарегистрированы, пожалуйста <a href="#" v-on:click="showAuth">авторизуйтесь</a>
+
+                            <user-register-data ref="userregdata"></user-register-data>
+
+                        </div>
+                        <div v-if="authMode">
+
+                            <h1>Укажите логин и пароль</h1>
+                            Если вы еще не зарегистрированы, пожалуйста <a href="#" v-on:click="showReg">заполните регистрационные данные</a>
+                            <user-login-data ref="userlogindata"></user-login-data>
+
+                        </div>
+                        <div v-if="userMode">
+
+                            <h1>Вы уже залогинены</h1>
+                            Просто жмахайте на батон!
+
+                        </div>
+
+
+                        <v-container>
+                            <v-layout align-center justify-center row>
+                                <v-btn color="primary" @click="step=2">Назад</v-btn>
+                                <v-btn color="primary" @click="step=1">Отправить заявку</v-btn>
+                            </v-layout>
+                        </v-container>
+
+                    </v-stepper-content>
+                </v-stepper-items>
+            </v-stepper>
+            <slot></slot>
+            DemandAuto:page1IsValid={{ page1IsValid }}<br>
+        </v-form>
 </template>
 
 
 <script>
-
 
     import UserRegisterData from './UserRegisterData.vue';
     import UserLoginData from './UserLoginData.vue';

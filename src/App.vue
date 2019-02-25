@@ -1,7 +1,5 @@
 <template>
-  <div id="app">
-    <demand-form></demand-form>
-  </div>
+
 </template>
 
 <script>

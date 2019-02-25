@@ -137,7 +137,7 @@
                 u_wheel_type: window.__DFS__u_wheel_type,
                 s_vin: window.__DFS__s_vin.toUpperCase(),
 
-                base_url: '/api/rest/',
+                base_url: 'http://ugavto.loc/api/rest/',
                 wasMounted: false,
                 inProcess: false
             }
@@ -224,7 +224,7 @@
             },
             getModels: function(){
                 this.inProcess = 1;
-                this.$http.get(this.base_url + 'models/'+this.brand_id+'/').then(function(response){
+                this.$http.get(this.base_url + 'models/'+this.brand_id).then(function(response){
                     console.log(response);
                     this.models = response.data;
                     this.inProcess = 0;
@@ -235,7 +235,7 @@
             },
             getModifs: function(){
                 this.inProcess = 1;
-                this.$http.get(this.base_url + 'modifs/'+this.model_id+'/').then(function(response){
+                this.$http.get(this.base_url + 'modifs/'+this.model_id).then(function(response){
                     console.log(response);
                     this.modifs = response.data;
                     this.inProcess = 0;

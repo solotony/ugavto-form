@@ -244,7 +244,8 @@
             return {
                 mode_retry: window.__RETRY__,
 
-                preloadREG: window.__UR__preloadREG,
+                //preloadREG: window.__UR__preloadREG,
+                preloadREG: [],
                 s_name: window.__UR__s_name,
                 s_email: window.__UR__s_email,
                 s_phone: window.__UR__s_phone,
